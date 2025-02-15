@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furry Valentine Squad 💌</title>
+    <style>
+        body {
+            background: #ffeff3;
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Comic Neue', cursive;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pet-card {
+            background: white;
+            padding: 1rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .pet-card:hover {
+            transform: rotate(-2deg) scale(1.05);
+        }
+
+        .pet-card::after {
+            content: '❤️';
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            font-size: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .polaroid-frame {
+            background: white;
+            padding: 0.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+
+        .pet-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            padding: 2rem;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .message-bubble {
+            background: #fff;
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border: 2px dashed #ff4d6d;
+        }
+
+        .floating-heart {
+            position: fixed;
+            animation: float 4s infinite ease-in-out;
+            opacity: 0.4;
+            z-index: -1;
+            font-size: 1.2rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(15deg); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Our Furry Valentine Crew Loves You! 💖</h1>
+    
+    <div class="container">
+        <!-- Cat Cards -->
+        <div class="pet-card">
+            <div class="polaroid-frame">
+                <img src="tator-tot.jpg" alt="Tator Tot" class="pet-image">
+            </div>
+            <h3>Tator Tot 🐱</h3>
+            <p>"I'll play extra long with you today!"</p>
+        </div>
+
+        <div class="pet-card">
+            <div class="polaroid-frame">
+                <img src="cabby.jpg" alt="Cabby" class="pet-image">
+            </div>
+            <h3>Cabby</h3>
+            <p>"I saved the best catnip for you!"</p>
+        </div>
+
+        <div class="pet-card">
+            <div class="polaroid-frame">
+                <img src="graham.jpg" alt="Graham Cracker" class="pet-image">
+            </div>
+            <h3>Graham Cracker 🐈</h3>
+            <p>"I love you as much as a Twin!"</p>
+        </div>
+
+        <!-- Ferret Card -->
+        <div class="pet-card">
+            <div class="polaroid-frame">
+                <img src="sprinkle.jpg" alt="Sprinkle" class="pet-image">
+            </div>
+            <h3>Sprinkle 🦡</h3>
+            <p>"Let's steal hearts instead of socks! Dook Dook!"</p>
+        </div>
+
+        <!-- Mouse Card -->
+        <div class="pet-card">
+            <div class="polaroid-frame">
+                <img src="derpie.jpg" alt="Derpie" class="pet-image">
+            </div>
+            <h3>Derpie 🐭</h3>
+            <p>"You're the cheese to my heart!"</p>
+        </div>
+    </div>
+
+    <div class="message-bubble">
+        <h2>To Our Favorite Humans 💝</h2>
+        <p>We may show love in weird ways (licking, nibbling, zoomies),<br> 
+        but our hearts are full of love for you! Happy Valentine's Day!</p>
+    </div>
+
+    <script>
+        function createFloatingHearts() {
+            const symbols = ['❤️', '💌', '🌸', '🐾', '🐭'];
+            for(let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.fontSize = Math.random() * 25 + 15 + 'px';
+                document.body.appendChild(heart);
+            }
+        }
+
+        window.onload = () => {
+            createFloatingHearts();
+            
+            document.querySelectorAll('.pet-card').forEach(card => {
+                card.style.transform = `rotate(${Math.random() * 8 - 4}deg)`;
+                card.style.zIndex = 1;
+            });
+        }
+    </script>
+</body>
+</html>
